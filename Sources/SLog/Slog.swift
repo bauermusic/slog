@@ -25,11 +25,12 @@ public class SLog {
         return _dateFormatter
     }()
     
-    public static func p(_ any: Any?..., line: Int = #line, file: String = #file, strFunc: String = #function) {
+    @discardableResult
+    public static func p(_ any: Any?..., line: Int = #line, file: String = #file, strFunc: String = #function) -> String {
         SLog.pExp(any, line: line, file: file, strFunc: strFunc)
     }
     
-    static private func pExp(_ any: [Any?], line: Int, file: String, strFunc: String) {
+    static private func pExp(_ any: [Any?], line: Int, file: String, strFunc: String) -> String {
         
 #if DEBUG
 #else
@@ -46,6 +47,7 @@ public class SLog {
         printString = "LOG\(timeStamp): \"\(message)\". \(callStr) (\(line))"
         
         print(printString)
+        return printString
     }
     
     private static func stringDescription(message: [Any?]) -> String {
