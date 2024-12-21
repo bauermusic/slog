@@ -31,12 +31,7 @@ public class SLog {
     }
     
     static private func pExp(_ any: [Any?], line: Int, file: String, strFunc: String) -> String {
-        
-#if DEBUG
-#else
-        return
-#endif
-        
+
         let callStr = printFunc ? "\(file.shortFileName): \(strFunc)" : file.shortFileName
         
         let timeStamp = SLog.printTimestamp ? "[\(SLog.dateFormatter.string(from: Date()))]" : ""
